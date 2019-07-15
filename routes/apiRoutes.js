@@ -28,8 +28,8 @@ module.exports = function(app) {
       password: req.body.password
     }).then(function(dbUser){
       res.json(dbUser);
-    })
-  })
+    });
+  });
   app.post("/api/login", passport.authenticate("local"), function(req, res){
     // db.User.findOne({
     //   where: {
@@ -46,11 +46,11 @@ module.exports = function(app) {
     //
     // })
     res.json(req.user);
-  })
+  });
 
   app.get("/api/users", function(req, res){
     db.User.findAll({}).then(function(dbUser){
       res.json(dbUser);
-    })
-  })
+    });
+  });
 };

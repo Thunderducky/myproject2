@@ -2,13 +2,13 @@ var wordCount = function(text){
   if(typeof text !== "string"){
     throw new Error("Must call wordCount with a string");
   }
-  return text.split(' ').filter(fragment => {
+  return text.split(" ").filter(function(fragment){
     if(fragment.trim().length > 0){
       return true;
     } else {
-      return false
+      return false;
     }
-  }).length
+  }).length;
 };
 
 module.exports = wordCount;

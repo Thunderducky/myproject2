@@ -13,12 +13,12 @@ describe("Word Count", function() {
     expect(wordCount("57 58 59")).to.equal(3);
   });
   it("should return zero words with an empty string", function(){
-    expect(wordCount("")).to.equal(0)
+    expect(wordCount("")).to.equal(0);
   });
   it("should return zero words with an empty string", function(){
-    expect(wordCount("     ")).to.equal(0)
+    expect(wordCount("     ")).to.equal(0);
   });
   it("should not count extra spaces", function(){
-    expect(wordCount("something    else")).to.equal(2)
+    expect(wordCount("something    else")).to.equal(2);
   });
 });

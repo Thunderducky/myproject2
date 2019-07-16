@@ -59,14 +59,14 @@ module.exports = function(app) {
       }
 
     });
-    db.Note.destroy({
-      where: {
-        id: req.params.id,
-        UserId: req.user.id
-      }
-    }).then(function(dbNote){
-      res.json(dbNote);
-    });
+    // db.Note.destroy({
+    //   where: {
+    //     id: req.params.id,
+    //     UserId: req.user.id
+    //   }
+    // }).then(function(dbNote){
+    //   res.json(dbNote);
+    // });
   });
 
   app.post("/api/register", function(req, res){

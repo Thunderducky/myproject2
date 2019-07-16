@@ -16,8 +16,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models){
-    User.hasMany(models.Note, { onDelete: "cascade"})
-  }
+    User.hasMany(models.Note, { onDelete: "cascade"});
+  };
 
   User.prototype.validPassword = function(password){
     return bcrypt.compareSync(password, this.password);

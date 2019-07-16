@@ -1,6 +1,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
-var isAuthenticated = require("../config/middleware/isAuthenticated")
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/examples", function(req, res) {
@@ -17,30 +17,29 @@ module.exports = function(app) {
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id",  function(req, res) {
+  app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
-  app.get('/api/notes/mine', isAuthenticated, function(req, res){
+  app.get("/api/notes/mine", isAuthenticated, function(req, res){
     db.Note.findAll({
       where: {
         UserId: req.user.id
       }
     }).then(function(dbNotes){
-      res.json(dbNotes)
-    })
-  })
+      res.json(dbNotes);
+    });
+  });
 
   app.post("/api/notes", isAuthenticated, function(req, res){
     db.Note.create({
-      text: req.body.text,
       UserId: req.user.id
     }).then(function(){
-      res.json(true)
-    })
-  })
+      res.json(true);
+    });
+  });
 
   app.delete("/api/notes/:id", isAuthenticated, function(req, res){
     db.Note.findOne({
@@ -54,12 +53,12 @@ module.exports = function(app) {
       else if(dbNote.UserId === req.user.id){
         dbNote.destroy().then(function(){
           res.status(200).json(true);
-        })
+        });
       } else {
         res.status(401).json(false);
       }
 
-    })
+    });
     db.Note.destroy({
       where: {
         id: req.params.id,
@@ -67,8 +66,8 @@ module.exports = function(app) {
       }
     }).then(function(dbNote){
       res.json(dbNote);
-    })
-  })
+    });
+  });
 
   app.post("/api/register", function(req, res){
     db.User.create({
